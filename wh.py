@@ -34,5 +34,13 @@ def main():
         df = pd.DataFrame(st.session_state.webhook_data)
         st.write(df)
 
+    # Receive webhook data
+    webhook_json = st.text_input("Enter webhook data (JSON format):")
+    if webhook_json:
+        # Parse the JSON data
+        data = st.json_loads(webhook_json)
+        # Append the data to the session state
+        st.session_state.webhook_data.append(data)
+
 if __name__ == "__main__":
     main()
