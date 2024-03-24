@@ -5,7 +5,8 @@ def generate_webhook_url():
     # Generate a unique identifier using UUID
     webhook_id = str(uuid.uuid4())
     # Construct the webhook URL
-    webhook_url = f"https://your-domain.com/webhook/{webhook_id}"
+    webhook_url = f"https://49win8x85gkbzcpq5ze9dr.streamlit.app/webhook/{webhook_id}"
+
     return webhook_url
 
 def main():
