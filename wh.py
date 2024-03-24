@@ -1,23 +1,23 @@
 import streamlit as st
-import uuid
 import pandas as pd
 
 # Define a placeholder to store incoming webhook data
 if "webhook_data" not in st.session_state:
     st.session_state.webhook_data = []
 
+# Use a fixed webhook ID
+WEBHOOK_ID = "422654c5-34ea-4790-9d72-d36fcb665d0f"
+
 def generate_webhook_url():
-    # Generate a unique identifier using UUID
-    webhook_id = str(uuid.uuid4())
     # Construct the webhook URL
-    webhook_url = f"https://49win8x85gkbzcpq5ze9dr.streamlit.app/webhook/{webhook_id}"
+    webhook_url = f"https://49win8x85gkbzcpq5ze9dr.streamlit.app/webhook/{WEBHOOK_ID}"
 
     return webhook_url
 
 def main():
     st.title("Webhook Receiver App")
 
-    # Generate a unique webhook URL
+    # Generate the webhook URL
     webhook_url = generate_webhook_url()
 
     # Display the webhook URL
