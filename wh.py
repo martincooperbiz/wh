@@ -2,6 +2,10 @@ import streamlit as st
 import uuid
 import pandas as pd
 
+# Define a placeholder to store incoming webhook data
+if "webhook_data" not in st.session_state:
+    st.session_state.webhook_data = []
+
 def generate_webhook_url():
     # Generate a unique identifier using UUID
     webhook_id = str(uuid.uuid4())
@@ -23,18 +27,11 @@ def main():
     # Display a message indicating that the app is ready to receive data
     st.write("This app is ready to receive data from the webhook.")
 
-    # Define a placeholder to display incoming data
-    incoming_data = st.empty()
-
     # Listen for incoming webhook data
-    if "webhook_data" not in st.session_state:
-        st.session_state.webhook_data = []
-
     if st.session_state.webhook_data:
-        incoming_data.write("Incoming Data:")
-        # Convert incoming data to a DataFrame
+        # Display incoming data as a table
+        st.write("Incoming Data:")
         df = pd.DataFrame(st.session_state.webhook_data)
-        # Display DataFrame as a table
         st.write(df)
 
 if __name__ == "__main__":
